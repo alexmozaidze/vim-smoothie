@@ -23,21 +23,11 @@ if !exists('g:smoothie_break_on_reverse')
 endif
 
 ""
-" Execute {command}, but saving 'scroll' value before, and restoring it
-" afterwards.  Useful for some commands (such as ^D or ^U), which overwrite
-" 'scroll' permanently if used with a [count].
-function s:execute_preserving_scroll(command)
-  let l:saved_scroll = &scroll
-  execute a:command
-  let &scroll = l:saved_scroll
-endfunction
-
-""
 " Scroll the window up by one line, or move the cursor up if the window is
 " already at the top.  Return 1 if cannot move any higher.
 function s:step_up()
   if line('.') > 1
-    call s:execute_preserving_scroll("normal! 1\<C-U>")
+    exe "normal! k\<C-y>"
     return 0
   else
     return 1
@@ -49,7 +39,7 @@ endfunction
 " already at the bottom.  Return 1 if cannot move any lower.
 function s:step_down()
   if line('.') < line('$')
-    call s:execute_preserving_scroll("normal! 1\<C-D>")
+    exe "normal! j\<C-e>"
     return 0
   else
     return 1
