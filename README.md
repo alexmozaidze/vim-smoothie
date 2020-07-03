@@ -78,6 +78,7 @@ Credits
 -------
 
 Created by [Piotr Śliwka](https://github.com/psliwka).
+
 Modified by [Alexmozaidze](https://github.com/alexmozaidze)
 
 Many thanks to authors of [vim-smooth-scroll], [comfortable-motion.vim], and
