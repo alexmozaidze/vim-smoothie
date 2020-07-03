@@ -27,7 +27,7 @@ endif
 " already at the top.  Return 1 if cannot move any higher.
 function s:step_up()
   if line('.') > 1
-    exe "normal! k\<C-y>"
+    exe "normal! \<C-y>k"
     return 0
   else
     return 1
@@ -39,7 +39,7 @@ endfunction
 " already at the bottom.  Return 1 if cannot move any lower.
 function s:step_down()
   if line('.') < line('$')
-    exe "normal! j\<C-e>"
+    exe "normal! \<C-e>j"
     return 0
   else
     return 1
