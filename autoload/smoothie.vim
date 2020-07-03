@@ -6,6 +6,12 @@ if !exists('g:smoothie_update_interval')
 	let g:smoothie_update_interval = 20
 endif
 
+if !exists('g:smoothie_preserve_cursor_position')
+	""
+	" Decides if the cursor position should be preserved or not
+	let g:smoothie_preserve_cursor_position = 0
+endif
+
 if !exists('g:smoothie_base_speed')
 	""
 	" Base scrolling speed (in lines per second), to be taken into account by
@@ -29,7 +35,7 @@ function s:step_up()
 	let cursor_pos_before_motion = line('.')
 	if line('.') > 1
 		exe "normal! \<C-y>"
-		if line('.') == cursor_pos_before_motion
+		if line('.') == cursor_pos_before_motion && g:smoothie_preserve_cursor_position == 0
 			exe "normal! k"
 		endif
 		return 0
@@ -45,7 +51,7 @@ function s:step_down()
 	let cursor_pos_before_motion = line('.')
 	if line('.') < line('$')
 		exe "normal! \<C-e>"
-		if line('.') == cursor_pos_before_motion
+		if line('.') == cursor_pos_before_motion && g:smoothie_preserve_cursor_position == 0
 			exe "normal! j"
 		endif
 		return 0
