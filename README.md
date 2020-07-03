@@ -30,6 +30,10 @@ adjusting one or more of the following variables in your `vimrc`:
   supposed to bind keys you like by yourself. See `plugin/smoothie.vim` to
   discover available mappings.
 
+* `g:smoothie_preserve_cursor_position`: If true, will prevent cursor from moving
+  from its current position. (keep in mind that cursor will be dragged by the
+  scroll if it's on the edge of the screen)
+
 Alternatives, a.k.a. why create yet another plugin
 --------------------------------------------------
 
@@ -74,6 +78,7 @@ Credits
 -------
 
 Created by [Piotr Śliwka](https://github.com/psliwka).
+Modified by [Alexmozaidze](https://github.com/alexmozaidze)
 
 Many thanks to authors of [vim-smooth-scroll], [comfortable-motion.vim], and
 [sexy_scroller.vim] for inspiration!
