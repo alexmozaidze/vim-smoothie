@@ -32,11 +32,11 @@ endif
 " Scroll the window up by one line, or move the cursor up if the window is
 " already at the top.  Return 1 if cannot move any higher.
 function s:step_up()
-	let cursor_pos_before_motion = line('.')
+	let l:saved_pos = line('.')
 	if line('.') > 1
 		exe "normal! \<C-y>"
-		if line('.') == cursor_pos_before_motion && g:smoothie_preserve_cursor_position == 0
-			exe "normal! k"
+		if l:saved_pos == line('.') && !g:smoothie_preserve_cursor_position
+			normal! k
 		endif
 		return 0
 	else
@@ -48,11 +48,11 @@ endfunction
 " Scroll the window down by one line, or move the cursor down if the window is
 " already at the bottom.  Return 1 if cannot move any lower.
 function s:step_down()
-	let cursor_pos_before_motion = line('.')
+	let l:saved_pos = line('.')
 	if line('.') < line('$')
 		exe "normal! \<C-e>"
-		if line('.') == cursor_pos_before_motion && g:smoothie_preserve_cursor_position == 0
-			exe "normal! j"
+		if l:saved_pos == line('.') && !g:smoothie_preserve_cursor_position
+			normal! j
 		endif
 		return 0
 	else
@@ -195,11 +195,23 @@ endfunction
 ""
 " Smooth equivalent to ^F.
 function smoothie#forwards()
-	call s:update_target(winheight(0) * v:count1)
+	call s:update_target(winheight(0))
 endfunction
 
 ""
 " Smooth equivalent to ^B.
 function smoothie#backwards()
-	call s:update_target(-winheight(0) * v:count1)
+	call s:update_target(-winheight(0))
+endfunction
+
+""
+" Smooth equivalent to gg
+function smoothie#start()
+	call s:update_target(-line('w0'))
+endfunction
+
+""
+" Smooth equivalent to G
+function smoothie#end()
+	call s:update_target(line('$') - line('w$'))
 endfunction

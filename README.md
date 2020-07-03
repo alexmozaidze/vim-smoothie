@@ -15,7 +15,7 @@ Neovim 0.3+ should do the trick.
 
 Install the plugin using your favorite plugin manager, for example [vim-plug]:
 ```
-Plug 'psliwka/vim-smoothie'
+Plug 'alexmozaidze/vim-smoothie'
 ```
 
 Customization
@@ -37,12 +37,12 @@ adjusting one or more of the following variables in your `vimrc`:
 Alternatives, a.k.a. why create yet another plugin
 --------------------------------------------------
 
-There are many other Vim plugins attempting to resolve the same problem. The
-most intresting one is [sexy_scroller.vim], which covers way more movement
+There are many other Vim plug-ins attempting to resolve the same problem. The
+most interesting one is [sexy_scroller.vim], which covers way more movement
 commands than vim-smoothie will ever do. Unfortunately, it also suffers from
 frequent visual artifacts, such as erratic screen jumps and animation
 jittering, impairing visual orientation and breaking the user experience. Many
-of these bugs are nearly impossible to fix due to the plugin's internal design.
+of these bugs are nearly impossible to fix due to the plug-in's internal design.
 Hence, vim-smoothie was born, focusing on stable, bug-free, _smooth_
 experience, at a cost of smaller feature set.
 
@@ -66,20 +66,27 @@ Known issues/incompatibilities
 
 vim-smoothie strives to remain fully compatible with native commands it
 replaces. That is, every command should still behave exactly as described in
-`:help scroll.txt`. There are still some deviations from the origial behavior,
+`:help scroll.txt`. There are still some deviations from the original behavior,
 which hopefully will be addressed in the future:
 
 * `^D`, `^U`, `^F`, `^B` should beep when they can't move any further.
 * `^F` and `^B` should respect the `window` option.
 * Native commands may move in a smarter way over wrapped/folded lines.
 
+TODO
+----
+
+* Improve `gg` and `G` smooth motions so that the cursor moves if the scroll hits the end/beginning of the 
+  buffer
+
+* Smoothen `zz`, `zt` and `zb` motions
 
 Credits
 -------
 
 Created by [Piotr Śliwka](https://github.com/psliwka).
 
-Modified by [Alexmozaidze](https://github.com/alexmozaidze)
+Forked and maintained by [Alex Mozaidze](https://github.com/alexmozaidze)
 
 Many thanks to authors of [vim-smooth-scroll], [comfortable-motion.vim], and
 [sexy_scroller.vim] for inspiration!
